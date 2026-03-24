@@ -1,0 +1,251 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #2a0050 0%, #000000 60%),
+                radial-gradient(circle at bottom, #0a001a, #000000);
+    color: white;
+}
+
+/* SCROLL SUAVE */
+html {
+    scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(15, 15, 20, 0.3); /* MAIS TRANSPARENTE */
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1000;
+    transition: 0.3s ease;
+}
+
+/* MENU */
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 16px;
+    list-style: none;
+}
+
+/* LINKS */
+nav a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: 0.25s ease;
+}
+
+/* LINHA ANIMADA */
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: #a855f7;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* SECTIONS */
+section {
+    padding: 140px 20px 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+/* ANIMAÇÃO */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* BOX PRINCIPAL */
+.box {
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(15, 15, 30, 0.55);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2);
+    padding: 40px;
+    max-width: 900px;
+    width: 90%;
+    transition: 0.3s;
+}
+
+/* BRILHO NA BOX */
+.box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(120deg, transparent, rgba(168, 85, 247, 0.1), transparent);
+    opacity: 0;
+    transition: 0.3s;
+    pointer-events: none; /* ISSO RESOLVE */
+}
+
+.box:hover::before {
+    opacity: 1;
+}
+
+/* HOVER */
+.box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(168, 85, 247, 0.35);
+}
+
+/* TÍTULOS */
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #ffffff, #a855f7);
+
+    background-clip: text;          
+    -webkit-background-clip: text;  
+
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+/* TEXTO */
+p {
+    margin-top: 10px;
+    line-height: 1.7;
+    color: #e5e7eb;
+}
+
+/* LISTAS */
+li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+/* LINKS GERAIS */
+a {
+    color: #cbd5f5;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #a855f7;
+}
+
+/* EXPERIÊNCIA */
+.exp-item {
+    margin: 30px auto;
+    padding: 20px;
+    border-left: 3px solid rgba(168, 85, 247, 0.8);
+    text-align: left;
+    max-width: 500px;
+    padding-left: 15px;
+}
+
+.exp-item h3 {
+    margin-bottom: 10px;
+    color: #a855f7;
+}
+
+/* SCROLL HORIZONTAL */
+.scroll {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+    cursor: grab;
+}
+
+/* CARDS */
+.card {
+    min-width: 280px;
+    max-width: 350px;
+    flex: 0 0 auto;
+
+    padding: 30px;
+    background: rgba(20, 20, 40, 0.75);
+    border-radius: 15px;
+    border: 1px solid rgba(168, 85, 247, 0.5);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
+
+    scroll-snap-align: center;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* HOVER DOS CARDS */
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 45px rgba(168, 85, 247, 0.4);
+}
+
+/* CURSOR */
+.scroll:active {
+    cursor: grabbing;
+}
+
+/* ESCONDER SCROLLBAR */
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        min-width: 80%;
+    }
+
+    section {
+        padding: 120px 15px 60px;
+    }
+}
